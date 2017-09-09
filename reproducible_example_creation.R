@@ -335,3 +335,14 @@ burd_pop[,age_101:=p_101*burd_pop$`80+ years`]
 
 
 final_format <- burd_pop[,c(1:2, 121:221),with=FALSE]
+
+
+# ------------------------------------------------ dcast issue --------------------------------
+test1 <- dcast(rd14, gates_country + ihme_country +iso3_code + year + cause ~ age + measure)
+
+test2 <- dcast(v_1, gates_country + ihme_country +iso3_code + year + cause ~ measure, value.var = c("lt1",
+                                                                                                    "age_1", 
+                                                                                                    "age_2_4",
+                                                                                                    "gt5"))
+
+
